@@ -1,0 +1,23 @@
+@startuml
+
+activate ユーザ
+  ユーザ -> ログイン : ログインする
+  activate ログイン
+    ログイン -> ユーザ情報 : ユーザが存在するか？
+    activate ユーザ情報
+      ユーザ情報 --> ログイン
+    deactivate ユーザ情報
+    ユーザ情報 -> 権限情報 : 権限があるか？
+    activate 権限情報
+      権限情報 --> ログイン
+    deactivate 権限情報
+    alt 認証[成功]
+      ログイン --> ユーザ : /dashboardにリダイレクト
+      deactivate ログイン
+    else 認証[失敗]
+      ログイン --> ユーザ : 認証失敗のメッセージを表示
+    end
+  deactivate ログイン
+deactivate ユーザ
+
+@enduml
