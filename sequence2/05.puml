@@ -1,0 +1,22 @@
+@startuml
+
+par
+activate 主婦
+
+主婦 -> 食パン : パンの準備
+
+activate 食パン
+食パン --> 主婦 : 焼いたパン
+deactivate 食パン
+
+else
+主婦 -> サラダ : サラダの準備
+
+activate サラダ
+サラダ --> 主婦 : 盛り付けたサラダ
+deactivate サラダ
+
+deactivate 主婦
+end
+
+@enduml
