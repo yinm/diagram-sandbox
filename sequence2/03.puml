@@ -1,0 +1,23 @@
+@startuml
+
+activate 社員
+
+alt 国内
+  社員 -> 鉄道 : チケット注文
+
+  activate 鉄道
+  鉄道 --> 社員 : チケット取得
+  deactivate 鉄道
+
+else 海外
+  社員 -> 飛行機 : チケット注文
+
+  activate 飛行機
+  飛行機 --> 社員 : チケット取得
+  deactivate 飛行機
+
+end
+
+deactivate 社員
+
+@enduml
