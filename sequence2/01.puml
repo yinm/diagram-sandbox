@@ -1,0 +1,28 @@
+@startuml
+
+activate 店員
+
+店員 -> 管理画面 : 在庫確認
+
+activate 管理画面
+管理画面 -> 倉庫 : 在庫検索
+
+activate 倉庫
+倉庫 -> 商品リスト : 商品検索
+
+activate 商品リスト
+商品リスト --> 倉庫 : 商品一覧
+deactivate 商品リスト
+
+倉庫 --> 管理画面 : 在庫一覧
+deactivate 倉庫
+
+管理画面 --> 店員 : 在庫結果確認
+activate 管理画面
+管理画面 -> 管理画面 : 閉じる
+deactivate 管理画面
+destroy 管理画面
+
+deactivate 店員
+
+@enduml
