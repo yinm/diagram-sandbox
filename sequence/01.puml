@@ -1,0 +1,18 @@
+@startuml
+
+activate ユーザ
+  ユーザ -> ログイン : ログインする
+  activate ログイン
+    ログイン -> ユーザ情報 : ユーザが存在するか？
+    activate ユーザ情報
+      ユーザ情報 --> ログイン
+    deactivate ユーザ情報
+    ユーザ情報 -> 権限情報 : 権限があるか？
+      activate 権限情報
+        権限情報 --> ログイン
+      deactivate 権限情報
+    ログイン --> ユーザ
+  deactivate ログイン
+deactivate ユーザ
+
+@enduml
