@@ -1,0 +1,24 @@
+@startuml
+
+activate 客
+
+activate 店員
+
+opt
+  客 -> 店員 : 入会依頼
+  店員 --> 客 : 会員証
+end
+
+客 -> 店員 : DVD依頼
+店員 -> DVD : DVD検索
+
+activate DVD
+DVD --> 店員 : DVD
+deactivate DVD
+
+店員 --> 客 : DVD
+deactivate 店員
+
+deactivate 客
+
+@enduml
