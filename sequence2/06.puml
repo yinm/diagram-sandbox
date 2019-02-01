@@ -1,0 +1,26 @@
+@startuml
+
+activate 客
+
+loop
+  客 -> 店員 : 商品
+
+  activate 店員
+  店員 -> レジ : レジ打ち
+
+  activate レジ
+end
+
+レジ --> 店員 : 結果
+店員 --> 客 : 結果
+
+客 -> 店員 : お金
+店員 -> レジ : お金
+
+レジ --> 店員 : レシート
+deactivate レジ
+
+店員 --> 客 : レシートと商品
+deactivate 店員
+
+@enduml
